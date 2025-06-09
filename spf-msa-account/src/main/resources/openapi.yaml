@@ -1,0 +1,547 @@
+openapi: 3.0.0
+info:
+  title: Customer Account
+  description: |
+    API for manages the Customers Account Information. <br>
+  contact:
+    name:  Jimmy Chango
+    email: cje.chango@hotmail.com
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/technical-test/v1
+    description: Development
+tags:
+  - name: "Customer Accounts"
+    description: "Customer Accounts Controller"
+  - name: "Customer Transactions"
+    description: "Customer Transactions Controller"
+paths:
+  /accounts:
+    post:
+      tags:
+        - Customer Accounts
+      summary: Save customer account information.
+      description: >+
+        ### Details:
+
+         Save the information of a new account for customer.
+      operationId: PostCustomerAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostCustomerAccountRequest'
+      responses:
+        201:
+          description: |-
+            <b>`Created`</b><br><br>
+            Insertion successful.
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      tags:
+        - Customer Accounts
+      summary: update customer account information.
+      description: "### Details:\n   Update the information of a customer account\n###"
+      operationId: PatchCustomerAccount
+      parameters:
+        - name: documentNumber
+          in: query
+          description: document number
+          required: true
+          explode: false
+          schema:
+            type: string
+          example: "0965875486"
+        - name: accountType
+          in: query
+          description: account type of customer to update
+          required: true
+          explode: false
+          schema:
+            type: string
+          example: "AHORRO"
+      requestBody:
+        description: Customer Account Status Update request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchCustomerAccountRequest'
+        required: true
+      responses:
+        "201":
+          description: |-
+            <b>`Updated`</b><br><br>
+            Update successful.
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /accounts/{documentNumber}:
+    get:
+      tags:
+        - Customer Accounts
+      summary: Retrieves customer account information.
+      description: "### Details:\n   Retrieves the information of the saved customers account."
+      operationId: GetCustomerAccount
+      parameters:
+        - name: documentNumber
+          in: path
+          description: document number of customer
+          required: true
+          explode: false
+          schema:
+            type: string
+          example: "0965875486"
+      responses:
+        200:
+          description: successfully returns customer account information.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/GetCustomerAccountResponse"
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      tags:
+        - Customer Accounts
+      summary: Delete customer account information.
+      description: "### Details:\n   Delete cutomer account information."
+      operationId: DeleteCustomerAccount
+      parameters:
+        - name: documentNumber
+          in: path
+          description: document number of customer
+          required: true
+          explode: false
+          schema:
+            type: string
+          example: "0965875486"
+        - name: accountType
+          in: query
+          description: account type of customer to delete
+          required: true
+          explode: false
+          schema:
+            type: string
+          example: "AHORRO"
+      responses:
+        200:
+          description: Customer account information deleted.
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /accounts/transactions:
+    post:
+      tags:
+        - Customer Transactions
+      summary: Save customer information.
+      description: >+
+        ### Details:
+
+         Save the information of a new customer transaction.
+      operationId: PostCustomerTransactions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostCustomerTransactionsRequest'
+      responses:
+        201:
+          description: |-
+            <b>`Created`</b><br><br>
+            Insertion successful.
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+    get:
+      tags:
+        - Customer Transactions
+      summary: Retrieves customer transaction information.
+      description: "### Details:\n   Retrieves the information of the saved customers transactions."
+      operationId: GetCustomerTransaction
+      parameters:
+        - name: documentNumber
+          in: query
+          description: document number of customer
+          required: true
+          explode: false
+          schema:
+            type: string
+          example: "0965875486"
+        - name: startDate
+          in: query
+          description: Start date to get report of customer
+          required: true
+          explode: false
+          schema:
+            type: string
+          example: "2024-12-01T00:00:00"
+        - name: endDate
+          in: query
+          description: End date to get report of customer
+          required: true
+          explode: false
+          schema:
+            type: string
+          example: "2024-12-04T23:59:59"
+        - name: accountType
+          in: query
+          description: account type
+          required: false
+          explode: false
+          schema:
+            type: string
+          example: "AHORRO"
+      responses:
+        200:
+          description: successfully returns customer information.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/GetCustomerTransactionResponse"
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    PostCustomerAccountRequest:
+      type: object
+      required:
+        - documentNumber
+        - accountType
+        - initialBalance
+      properties:
+        documentNumber:
+          type: string
+          description: customer identification
+          example: "0965875486"
+          pattern: "^[0-9]{10}$"
+        accountType:
+          type: string
+          description: account type
+          example: "Ahorro/Corriente"
+          enum: [AHORRO, CORRIENTE]
+        initialBalance:
+          type: number
+          description: customer user name
+          format: double
+          example: 500.6
+    GetCustomerAccountResponse:
+      type: object
+      properties:
+        customer:
+          $ref: '#/components/schemas/CustomerAccounts'
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+    PatchCustomerAccountRequest:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+    PostCustomerTransactionsRequest:
+      type: object
+      required:
+        - documentNumber
+        - accountNumber
+        - amount
+      properties:
+        documentNumber:
+          type: string
+          description: customer identification
+          example: "0965875486"
+          pattern: "^[0-9]{10}$"
+        accountNumber:
+          type: string
+          description: account number
+          example: "2254566584"
+        amount:
+          type: number
+          description: amount of transaccion
+          format: double
+          example: 500.6
+        transactions:
+          $ref: '#/components/schemas/Transactions'
+    Transactions:
+      type: object
+      properties:
+        transaction:
+          type: string
+          description: movement type
+          enum: [DEBIT, CREDIT]
+        typeTransaction:
+          type: string
+          description: type transaction
+          enum: [DEBIT_CARD, CREDIT_DEPOSIT]
+    GetCustomerTransactionResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/CustomerTransactions'
+    CustomerTransactions:
+      type: object
+      properties:
+        customer:
+          $ref: '#/components/schemas/CustomerAccounts'
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Accounts'
+    Transaction:
+      type: object
+      properties:
+        transactionDate:
+          type: string
+          description: account number
+          example: "12/03/2024"
+        balance:
+          type: number
+          description: balance
+          format: double
+          example: 1500
+        balanceOld:
+          type: number
+          description: balance
+          format: double
+          example: 1000
+        amount:
+          type: number
+          description: transaction amount
+          format: double
+          example: 1500
+        transactionType:
+          type: string
+          description: movement type
+          example: "debito/credito"
+    Accounts:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+          description: account number
+          example: "2254566584"
+        accountType:
+          type: string
+          description: account type
+          example: "Ahorro/Corriente"
+        initialBalance:
+          type: number
+          description: initial balance
+          format: double
+          example: 500.6
+        availableBalance:
+          type: number
+          description: available balance
+          format: double
+          example: 1500
+        status:
+          $ref: '#/components/schemas/Status'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    Account:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+          description: account number
+          example: "2254566584"
+        accountType:
+          type: string
+          description: account type
+          example: "Ahorro/Corriente"
+        initialBalance:
+          type: number
+          description: initial balance
+          format: double
+          example: 500.6
+        availableBalance:
+          type: number
+          description: available balance
+          format: double
+          example: 1500
+        status:
+          $ref: '#/components/schemas/Status'
+    Status:
+      type: object
+      properties:
+        code:
+          type: string
+          description: customer status
+          example: "ENABLED"
+    CustomerAccounts:
+      type: object
+      properties:
+        documentNumber:
+          type: string
+          description: document number
+          example: "0986587568"
+        fullName:
+          type: string
+          description: document number
+          example: "Juan Rodriguez"
+      title: CustomerAccount
+    ErrorList:
+      properties:
+        message:
+          type: string
+          description: Message.
+          example: Bad Request
+        businessMessage:
+          type: string
+          description: Business error message.
+          example: The xyz field is mandatory
+    Error:
+      type: object
+      properties:
+        title:
+          maximum: 50
+          type: string
+          description: Technical error message.
+          example: Missing mandatory fields.
+        detail:
+          maximum: 50
+          type: string
+          description: Message to display to the client.
+          example: The input fields are not correct
+        instance:
+          maximum: 50
+          type: string
+          description: Error catalog code.
+          example: "022"
+        type:
+          maximum: 100
+          type: string
+          description: Address where the error occurs.
+          example: /v1/name/pathSuffix

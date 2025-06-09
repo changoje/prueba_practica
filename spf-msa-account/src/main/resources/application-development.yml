@@ -1,0 +1,34 @@
+server:
+  port: 80
+  error:
+    include-message: always
+
+info:
+  project:
+    name: spf-msa-account
+    version: 1.0.0
+
+spring:
+  r2dbc:
+    url: r2dbc:mysql://mysql:3306/db_bank_operations?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 545469
+    properties:
+      dialect: MYSQL
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+    platform: mysql
+  data:
+    jpa:
+      show-sql: true
+    r2dbc:
+      repositories:
+        enabled: true
+    redis:
+      host: redis
+      port: 6379
+
+backend:
+  time:
+    session: 100

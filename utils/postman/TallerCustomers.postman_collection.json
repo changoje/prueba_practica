@@ -1,0 +1,1209 @@
+{
+	"info": {
+		"_postman_id": "9aabd708-fbcd-4f64-a0fa-7b3312314e92",
+		"name": "TallerCustomers",
+		"description": "API for manages the Customers Information. <br>\n\n\nContact Support:\n Name: Jimmy Chango\n Email: cje.chango@hotmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "customers",
+			"item": [
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "PostUserLogin",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json;charset=UTF-8"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"username\": \"jchango942\",\n   \"password\": \"545469jkl\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:9080/technical-test/v1/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9080",
+									"path": [
+										"technical-test",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "PostUserLogin",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json;charset=UTF-8"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"eleon\",\n  \"password\": \"Password123#\"\n}"
+										},
+										"url": {
+											"raw": "http://localhost:9099/technical-test/v1/users/login",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9099",
+											"path": [
+												"technical-test",
+												"v1",
+												"users",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "204"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbGVvbiIsInV1aWQiOiJmYjkzYTBmOC1mYTNjLTRjODgtYmVkNC05YmUxMTU5OTk0YzkiLCJpYXQiOjE3NDA3MDQxNzUsImV4cCI6Mjc0MDY4NjE3NX0.nDEMOYcC9szRup9MYjf1Jv_N4t_dkFFxwdADe14okeQ\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Save customer information.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqY2hhbmdvOTQyIiwidXVpZCI6Ijk4ZGIwMWFjLWI4YjMtNGM5ZC04NzY5LTJmZWMyNzU0MTA2NiIsImlhdCI6MTc0MTg4NDk3NCwiZXhwIjoyNzQxODY2OTc0fQ.r57LOPxNvtaNG-YEjCT0Ao18bVZj4Var3Py-jl4kQQY",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"userName\": \"jchango42765\",\n   \"documentNumber\": \"3473698276\",\n   \"name\": \"Carlos Gael Torres Kapo\",\n   \"password\": \"jkl*poryt6\",\n   \"address\": \"Mapasingue este\",\n   \"phone\": \"0996397688\",\n   \"gender\": \"MALE\",\n   \"age\": 33,\n   \"accountType\": \"AHORRO\",\n   \"initialBalance\": 500\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9099/technical-test/v1/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"technical-test",
+								"v1",
+								"customers"
+							]
+						},
+						"description": "### Details:\n\n Save the information of a new customer.\n"
+					},
+					"response": [
+						{
+							"name": "Customer information successfully save.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"documentNumber\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"address\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"age\": \"<number>\",\n  \"accountType\": \"<string>\",\n  \"initialBalance\": \"<double>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "You're not authorized to perform this operation.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"documentNumber\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"address\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"age\": \"<number>\",\n  \"accountType\": \"<string>\",\n  \"initialBalance\": \"<double>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"errorCode\": \"ITcagL\",\n  \"developerMessage\": \"U \\nTC\"\n}"
+						},
+						{
+							"name": "You don't have the right permissions to execute this operation.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"documentNumber\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"address\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"age\": \"<number>\",\n  \"accountType\": \"<string>\",\n  \"initialBalance\": \"<double>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"create"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"errorCode\": \"ITcagL\",\n  \"developerMessage\": \"U \\nTC\"\n}"
+						},
+						{
+							"name": "An error has occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"documentNumber\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"address\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"age\": \"<number>\",\n  \"accountType\": \"<string>\",\n  \"initialBalance\": \"<double>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"create"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"errorCode\": \"ITcagL\",\n  \"developerMessage\": \"U \\nTC\"\n}"
+						},
+						{
+							"name": "The service is not available.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"documentNumber\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"address\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"age\": \"<number>\",\n  \"accountType\": \"<string>\",\n  \"initialBalance\": \"<double>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"create"
+									]
+								}
+							},
+							"status": "Bad Gateway",
+							"code": 502,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"errorCode\": \"ITcagL\",\n  \"developerMessage\": \"U \\nTC\"\n}"
+						},
+						{
+							"name": "Save customer information.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"documentNumber\": \"0201059954\",\n    \"name\": \"Kael Kilaba\",\n    \"password\": \"545469\",\n    \"address\": \"La manzana\",\n    \"phone\": \"0985632469\",\n    \"gender\": \"M\",\n    \"age\": 25,\n    \"accountType\": \"CORRIENTE\",\n    \"initialBalance\": 800\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "content-length",
+									"value": "0"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Retrieves customer information.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9099/technical-test/v1/customers?documentNumber=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"technical-test",
+								"v1",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "documentNumber",
+									"value": ""
+								}
+							]
+						},
+						"description": "### Details:\n   Retrieves the information of the saved customers."
+					},
+					"response": [
+						{
+							"name": "successfully returns customer information.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers/search?identificationId=<string>&password=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"search"
+									],
+									"query": [
+										{
+											"key": "identificationId",
+											"value": "<string>",
+											"description": "(Required) customer identification for loggin"
+										},
+										{
+											"key": "password",
+											"value": "<string>",
+											"description": "(Required) customer password"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"documentNumber\": \"<string>\",\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"age\": \"<number>\",\n    \"status\": {\n      \"code\": \"<string>\"\n    }\n  },\n  {\n    \"documentNumber\": \"<string>\",\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"age\": \"<number>\",\n    \"status\": {\n      \"code\": \"<string>\"\n    }\n  }\n]"
+						},
+						{
+							"name": "You're not authorized to perform this operation.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers/search?identificationId=<string>&password=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"search"
+									],
+									"query": [
+										{
+											"key": "identificationId",
+											"value": "<string>",
+											"description": "(Required) customer identification for loggin"
+										},
+										{
+											"key": "password",
+											"value": "<string>",
+											"description": "(Required) customer password"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"errorCode\": \"ITcagL\",\n  \"developerMessage\": \"U \\nTC\"\n}"
+						},
+						{
+							"name": "You don't have the right permissions to execute this operation.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers/search?identificationId=<string>&password=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"search"
+									],
+									"query": [
+										{
+											"key": "identificationId",
+											"value": "<string>",
+											"description": "(Required) customer identification for loggin"
+										},
+										{
+											"key": "password",
+											"value": "<string>",
+											"description": "(Required) customer password"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"errorCode\": \"ITcagL\",\n  \"developerMessage\": \"U \\nTC\"\n}"
+						},
+						{
+							"name": "An error has occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers/search?identificationId=<string>&password=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"search"
+									],
+									"query": [
+										{
+											"key": "identificationId",
+											"value": "<string>",
+											"description": "(Required) customer identification for loggin"
+										},
+										{
+											"key": "password",
+											"value": "<string>",
+											"description": "(Required) customer password"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"errorCode\": \"ITcagL\",\n  \"developerMessage\": \"U \\nTC\"\n}"
+						},
+						{
+							"name": "The service is not available.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers/search?identificationId=<string>&password=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"search"
+									],
+									"query": [
+										{
+											"key": "identificationId",
+											"value": "<string>",
+											"description": "(Required) customer identification for loggin"
+										},
+										{
+											"key": "password",
+											"value": "<string>",
+											"description": "(Required) customer password"
+										}
+									]
+								}
+							},
+							"status": "Bad Gateway",
+							"code": 502,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"errorCode\": \"ITcagL\",\n  \"developerMessage\": \"U \\nTC\"\n}"
+						},
+						{
+							"name": "Retrieves customer information.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers/search?identificationId=0201059954&password=545469",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"search"
+									],
+									"query": [
+										{
+											"key": "identificationId",
+											"value": "0201059954",
+											"description": "(Required) customer identification for loggin"
+										},
+										{
+											"key": "password",
+											"value": "545469",
+											"description": "(Required) customer password"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"documentNumber\": \"0201059953\",\n        \"name\": \"Lucas Santos\",\n        \"address\": \"La gran manzana\",\n        \"phone\": \"0985632469\",\n        \"gender\": \"M\",\n        \"age\": 25,\n        \"status\": {\n            \"code\": \"ENABLED\"\n        }\n    },\n    {\n        \"documentNumber\": \"0201059952\",\n        \"name\": \"Jimmy Chango\",\n        \"address\": \"Bastion Popular\",\n        \"phone\": \"0985632469\",\n        \"gender\": \"M\",\n        \"age\": 25,\n        \"status\": {\n            \"code\": \"ENABLED\"\n        }\n    },\n    {\n        \"documentNumber\": \"0201059954\",\n        \"name\": \"Kael Kilaba\",\n        \"address\": \"La manzana\",\n        \"phone\": \"0985632469\",\n        \"gender\": \"M\",\n        \"age\": 25,\n        \"status\": {\n            \"code\": \"ENABLED\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "DeleteCustomer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/customers/0788100946",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"0788100946"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutCustomer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"name\": \"Jimmy Chango\",\n   \"password\": \"123456\",\n   \"address\": \"La manzana 12\",\n   \"phone\": \"0996397688\",\n   \"gender\": \"MALE\",\n   \"age\": 23,\n   \"status\": {\n      \"code\": \"DISABLED\"\n   }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9095/technical-test/v1/customers?documentNumber=0788100946",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9095",
+							"path": [
+								"technical-test",
+								"v1",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "documentNumber",
+									"value": "0788100946"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "GetCustomerAccount",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9097/technical-test/v1/accounts/0933698276",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9097",
+							"path": [
+								"technical-test",
+								"v1",
+								"accounts",
+								"0933698276"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GetCustomerAccount",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9097/technical-test/v1/accounts/0788100072",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9097",
+									"path": [
+										"technical-test",
+										"v1",
+										"accounts",
+										"0788100072"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "201"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"customer\": {\n        \"documentNumber\": \"0788100072\",\n        \"fullName\": \"\"\n    },\n    \"accounts\": [\n        {\n            \"accountNumber\": \"8484012063\",\n            \"accountType\": \"AHORRO\",\n            \"initialBalance\": 560,\n            \"availableBalance\": 560,\n            \"status\": {\n                \"code\": \"ENABLED\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "DeleteCustomerAccount",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9097/technical-test/v1/accounts/0987576534?accountType=AHORRO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9097",
+							"path": [
+								"technical-test",
+								"v1",
+								"accounts",
+								"0987576534"
+							],
+							"query": [
+								{
+									"key": "accountType",
+									"value": "AHORRO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PatchCustomerAccount",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": {\n    \"code\": \"DISABLED\"\n  }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9097/technical-test/v1/accounts?documentNumber=1716051553&accountType=CORRIENTE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9097",
+							"path": [
+								"technical-test",
+								"v1",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "documentNumber",
+									"value": "1716051553"
+								},
+								{
+									"key": "accountType",
+									"value": "CORRIENTE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostCustomerTransactions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"documentNumber\": \"0827948872\",\n   \"accountNumber\": \"1509838598\",\n   \"amount\": 30,\n   \"transactions\": {\n      \"transaction\": \"DEBIT\",\n      \"typeTransaction\": \"DEBIT_CARD\"\n   }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9097/technical-test/v1/accounts/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9097",
+							"path": [
+								"technical-test",
+								"v1",
+								"accounts",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCustomerTransaction",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9097/technical-test/v1/accounts/transactions?documentNumber=0878958872&startDate=2025-02-27T00:00:00&endDate=2025-02-27T23:59:59",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9097",
+							"path": [
+								"technical-test",
+								"v1",
+								"accounts",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "documentNumber",
+									"value": "0878958872"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-02-27T00:00:00"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-02-27T23:59:59"
+								},
+								{
+									"key": "accountType",
+									"value": "AHORRO",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GetCustomerTransaction",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9097/technical-test/v1/accounts/transactions?documentNumber=0878958872&startDate=2025-02-27T00:00:00&endDate=2025-02-27T23:59:59",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9097",
+									"path": [
+										"technical-test",
+										"v1",
+										"accounts",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "documentNumber",
+											"value": "0878958872"
+										},
+										{
+											"key": "startDate",
+											"value": "2025-02-27T00:00:00"
+										},
+										{
+											"key": "endDate",
+											"value": "2025-02-27T23:59:59"
+										},
+										{
+											"key": "accountType",
+											"value": "AHORRO",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"customer\": {\n            \"documentNumber\": \"0878958872\",\n            \"fullName\": \"Jimmy\"\n        },\n        \"accounts\": [\n            {\n                \"accountNumber\": \"4282734685\",\n                \"accountType\": \"AHORRO\",\n                \"initialBalance\": 12,\n                \"availableBalance\": 342,\n                \"status\": {\n                    \"code\": \"ENABLED\"\n                },\n                \"transactions\": [\n                    {\n                        \"transactionDate\": \"2025-02-27T20:29:22\",\n                        \"balance\": 2,\n                        \"amount\": 10,\n                        \"transactionType\": \"DEBIT\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-02-27T20:38:26\",\n                        \"balance\": 102,\n                        \"amount\": 100,\n                        \"transactionType\": \"CREDIT\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-02-27T20:40:17\",\n                        \"balance\": 202,\n                        \"amount\": 100,\n                        \"transactionType\": \"CREDIT\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-02-27T20:40:23\",\n                        \"balance\": 302,\n                        \"amount\": 100,\n                        \"transactionType\": \"CREDIT\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-02-27T21:25:12\",\n                        \"balance\": 402,\n                        \"amount\": 100,\n                        \"transactionType\": \"CREDIT\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-02-27T21:29:52\",\n                        \"balance\": 342,\n                        \"amount\": 60,\n                        \"transactionType\": \"DEBIT\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+						},
+						{
+							"name": "GetCustomerTransaction",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9097/technical-test/v1/accounts/transactions?documentNumber=0827948872&startDate=2025-03-04T00:00:00&endDate=2025-03-04T23:59:59",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9097",
+									"path": [
+										"technical-test",
+										"v1",
+										"accounts",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "documentNumber",
+											"value": "0827948872"
+										},
+										{
+											"key": "startDate",
+											"value": "2025-03-04T00:00:00"
+										},
+										{
+											"key": "endDate",
+											"value": "2025-03-04T23:59:59"
+										},
+										{
+											"key": "accountType",
+											"value": "AHORRO",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"customer\": {\n            \"documentNumber\": \"0827948872\",\n            \"fullName\": \"Jimmy\"\n        },\n        \"accounts\": [\n            {\n                \"accountNumber\": \"1509838598\",\n                \"accountType\": \"AHORRO\",\n                \"initialBalance\": 560,\n                \"availableBalance\": 780,\n                \"status\": {\n                    \"code\": \"ENABLED\"\n                },\n                \"transactions\": [\n                    {\n                        \"transactionDate\": \"2025-03-04T11:42:15\",\n                        \"balance\": 540,\n                        \"balanceOld\": 560,\n                        \"amount\": 20,\n                        \"transactionType\": \"DEBIT_CARD\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-03-04T12:48:19\",\n                        \"balance\": 510,\n                        \"balanceOld\": 540,\n                        \"amount\": 30,\n                        \"transactionType\": \"DEBIT_CARD\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-03-04T12:52:06\",\n                        \"balance\": 480,\n                        \"balanceOld\": 510,\n                        \"amount\": 30,\n                        \"transactionType\": \"DEBIT_CARD\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-03-04T15:33:57\",\n                        \"balance\": 450,\n                        \"balanceOld\": 480,\n                        \"amount\": 30,\n                        \"transactionType\": \"DEBIT_CARD\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-03-04T15:55:18\",\n                        \"balance\": 480,\n                        \"balanceOld\": 450,\n                        \"amount\": 30,\n                        \"transactionType\": \"CREDIT_DEPOSIT\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-03-04T15:55:40\",\n                        \"balance\": 580,\n                        \"balanceOld\": 480,\n                        \"amount\": 100,\n                        \"transactionType\": \"CREDIT_DEPOSIT\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-03-04T17:24:12\",\n                        \"balance\": 680,\n                        \"balanceOld\": 580,\n                        \"amount\": 100,\n                        \"transactionType\": \"CREDIT_DEPOSIT\"\n                    },\n                    {\n                        \"transactionDate\": \"2025-03-04T17:35:59\",\n                        \"balance\": 780,\n                        \"balanceOld\": 680,\n                        \"amount\": 100,\n                        \"transactionType\": \"CREDIT_DEPOSIT\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "PostCustomerAccount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"documentNumber\": \"0543677026\",\n   \"accountType\": \"AHORRO\",\n   \"initialBalance\": 560.0\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9097/technical-test/v1/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9097",
+							"path": [
+								"technical-test",
+								"v1",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:9099/technical-test/v1"
+		}
+	]
+}

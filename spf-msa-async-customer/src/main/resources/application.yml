@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spf-msa-async-customer
+  header:
+    channel: digital
+    medium: web
+  web-flux:
+    base-path: /technical-test/v1
+  profiles:
+    active:
+      - development
+backend:
+  time:
+    session: 100

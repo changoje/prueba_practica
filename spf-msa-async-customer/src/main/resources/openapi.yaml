@@ -1,0 +1,62 @@
+---
+openapi: 3.0.0
+info:
+  title: Customer Async
+  description: |
+    API Async for manages the Customers Account Information. <br>
+  contact:
+    name:  Jimmy Chango
+    email: cje.chango@hotmail.com
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/technical-test/v1
+    description: Development
+tags:
+  - name: Customer
+    description: Customer Controller
+paths:
+  /async-customer:
+    get:
+      tags:
+        - Customer
+      summary: Method to consumer a Customer
+      operationId: CustomerAsync
+      responses:
+        "200":
+          description: |
+            OK<br><br>
+components:
+  schemas:
+    ErrorList:
+      properties:
+        message:
+          type: string
+          description: Message.
+          example: Bad Request
+        businessMessage:
+          type: string
+          description: Business error message.
+          example: The xyz field is mandatory
+    Error:
+      type: object
+      properties:
+        title:
+          maximum: 50
+          type: string
+          description: Technical error message.
+          example: Missing mandatory fields.
+        detail:
+          maximum: 50
+          type: string
+          description: Message to display to the client.
+          example: The input fields are not correct
+        instance:
+          maximum: 50
+          type: string
+          description: Error catalog code.
+          example: "022"
+        type:
+          maximum: 100
+          type: string
+          description: Address where the error occurs.
+          example: /v1/name/pathSuffix

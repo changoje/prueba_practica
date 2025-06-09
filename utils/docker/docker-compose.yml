@@ -1,0 +1,59 @@
+services:
+  event-client:
+    image: spf-msa-async-customer:latest
+    build:
+      context: ./spf-msa-async-customer
+      dockerfile: Dockerfile
+    ports:
+      - "9095:80"
+    networks:
+      - backend
+    depends_on:
+      - redis
+
+  customer-client:
+    image: spf-msa-customer:latest
+    build:
+      context: ./spf-msa-customer
+      dockerfile: Dockerfile
+    ports:
+      - "9099:80"
+    networks:
+      - backend
+    depends_on:
+      - redis
+
+  account-client:
+    image: spf-msa-account:latest
+    build:
+      context: ./spf-msa-account
+      dockerfile: Dockerfile
+    ports:
+      - "9097:80"
+    networks:
+      - backend
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
+
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 545469
+    ports:
+      - '3306:3306'
+    volumes: 
+      - ./schemas:/var/lib/mysql
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

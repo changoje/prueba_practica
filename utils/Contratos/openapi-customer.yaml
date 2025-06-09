@@ -1,0 +1,437 @@
+openapi: 3.0.0
+info:
+  title: Customers
+  description: |
+    API for manages the Customers Information. <br>
+  contact:
+    name:  Jimmy Chango
+    email: cje.chango@hotmail.com
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/technical-test/v1
+    description: Development
+tags:
+  - name: "Customers"
+    description: "Customers Controller"
+paths:
+  /customers:
+    post:
+      tags:
+        - Customers
+      summary: Save customer information.
+      description: >+
+        ### Details:
+
+         Save the information of a new customer.
+      operationId: PostCustomerCreate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostCustomerCreateRequest'
+      responses:
+        200:
+          description: Customer information successfully save.
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+    get:
+      tags:
+        - Customers
+      summary: Retrieves customer information.
+      description: "### Details:\n   Retrieves the information of the saved customers."
+      operationId: GetCustomerSearch
+      responses:
+        200:
+          description: successfully returns customer information.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GetCustomerSearchResponse"
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      tags:
+        - Customers
+      summary: update customer information.
+      description: "### Details:\n   Update the information of a customer\n###"
+      operationId: PutCustomer
+      parameters:
+        - name: documentNumber
+          in: query
+          description: customer identification
+          required: true
+          explode: false
+          schema:
+            type: string
+            pattern: "^[0-9]{10}$"
+          example: "1205254566"
+      requestBody:
+        description: Customer data update request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutCustomerRequest'
+        required: true
+      responses:
+        200:
+          description: Activation services order status updated.
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /customers/{documentNumber}:
+    delete:
+      tags:
+        - Customers
+      summary: Delete customer information.
+      description: "### Details:\n   Delete cutomer information."
+      operationId: DeleteCustomer
+      parameters:
+        - name: documentNumber
+          in: path
+          description: customer identification
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            pattern: "^[0-9]{10}$"
+          example: "1205254566"
+      responses:
+        200:
+          description: Customer information deleted.
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /users/login:
+    post:
+      tags:
+        - User
+      summary: Login
+      description: |
+        <h2> Details </h2>
+        Method to login using username and password.
+        <br>
+      operationId: PostUserLogin
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: '#/components/schemas/PostUserLoginRequest'
+        required: true
+      responses:
+        200:
+          description: Customer information successfully save.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/PostUserLoginResponse'
+        401:
+          description: You're not authorized to perform this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: You don't have the right permissions to execute this operation.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: An error has occurred.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+        502:
+          description: The service is not available.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    PostCustomerCreateRequest:
+      type: object
+      required:
+        - documentNumber
+        - accountType
+        - initialBalance
+        - name
+        - password
+        - userName
+      properties:
+        userName:
+          type: string
+          description: user name
+          example: "jchango"
+          pattern: "^[a-zA-Z0-9]+$"
+        documentNumber:
+          type: string
+          description: customer identification
+          example: "0965875486"
+          pattern: "^[0-9]{10}$"
+        name:
+          type: string
+          description: customer name
+          example: "Jose Lema"
+        password:
+          type: string
+          description: customer password
+          example: "xxxxxxxxxx"
+        address:
+          type: string
+          description: customer address
+          example: "Jose Lema"
+        phone:
+          type: string
+          description: customer phone
+          example: "042365896"
+        gender:
+          type: string
+          description: customer gender
+          enum: [MALE, FEMALE]
+        age:
+          type: number
+          description: customer age.
+          example: 25
+          pattern: "^[0-9]$"
+        accountType:
+          type: string
+          description: account type
+          example: "AHORRO/CORRIENTE"
+          enum: [AHORRO, CORRIENTE]
+        initialBalance:
+          type: number
+          description: customer user name
+          format: double
+          example: 500.6
+    GetCustomerSearchResponse:
+      title: GetCustomerSearchResponse
+      type: object
+      properties:
+        documentNumber:
+          type: string
+          description: customer identification
+          example: "0965875486"
+        name:
+          type: string
+          description: customer name
+          example: "Jose Lema"
+        address:
+          type: string
+          description: customer address
+          example: "Jose Lema"
+        phone:
+          type: string
+          description: customer phone
+          example: "042365896"
+        gender:
+          type: string
+          description: customer gender
+          example: "masculino"
+        age:
+          type: number
+          description: customer age.
+          example: 25
+        status:
+          $ref: '#/components/schemas/Status'
+    PutCustomerRequest:
+      type: object
+      required:
+        - accountType
+        - initialBalance
+        - name
+        - password
+      properties:
+        name:
+          type: string
+          description: customer name
+          example: "Jose Lema"
+        password:
+          type: string
+          description: customer password
+          example: "xxxxxxxxxx"
+        address:
+          type: string
+          description: customer address
+          example: "Jose Lema"
+        phone:
+          type: string
+          description: customer phone
+          example: "042365896"
+        gender:
+          type: string
+          description: customer gender
+          enum: [MALE, FEMALE]
+        age:
+          type: number
+          description: customer age.
+          example: 25
+          pattern: "^[0-9]$"
+        status:
+          $ref: '#/components/schemas/Status'
+    PostUserLoginRequest:
+      required:
+        - password
+        - username
+      type: object
+      properties:
+        username:
+          maxLength: 25
+          minLength: 4
+          type: string
+          description: Username
+          example: eleon
+        password:
+          maxLength: 25
+          minLength: 8
+          type: string
+          description: User's password
+          example: Password123#
+      description: Login request data
+    PostUserLoginResponse:
+      required:
+        - token
+      type: object
+      properties:
+        token:
+          maxLength: 8192
+          type: string
+          description: Authentication token
+          example: eyJhbGciOiJIUzI1NiIsImtpZCI6IkNCVjFCWUNheFRuTFFFODFhTWwxX29hN3VzVmlENjBjX0RCcHdLQWd1anMiLCJ0eXAiOiJKV1QifQ.eyJhbGciOiJIUzI1NiIsImtpZCI6IkNCVjFCWUNheFRuTFFFODFhTWwxX29hN3VzVmlENjBjX0RCcHdLQWd1anMiLCJ0eXAiOiJKV1QifQ.eyJhbGciOiJIUzI1NiIsImtpZCI6IkNCVjFCWUNheFRuTFFFODFhTWwxX29hN3VzVmlENjBjX0RCcHdLQWd1anMiLCJ0eXAiOiJKV1QifQ
+      description: Login response
+    Status:
+      type: object
+      properties:
+        code:
+          type: string
+          description: customer status
+          example: "ENABLED"
+    ErrorList:
+      properties:
+        message:
+          type: string
+          description: Message.
+          example: Bad Request
+        businessMessage:
+          type: string
+          description: Business error message.
+          example: The xyz field is mandatory
+    Error:
+      type: object
+      properties:
+        title:
+          maximum: 50
+          type: string
+          description: Technical error message.
+          example: Missing mandatory fields.
+        detail:
+          maximum: 50
+          type: string
+          description: Message to display to the client.
+          example: The input fields are not correct
+        instance:
+          maximum: 50
+          type: string
+          description: Error catalog code.
+          example: "022"
+        type:
+          maximum: 100
+          type: string
+          description: Address where the error occurs.
+          example: /v1/name/pathSuffix
+        errorList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorList'
